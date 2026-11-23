@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drift</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/game.css">
+</head>
+<body>
+  <a class="skip-link" href="#bite">Skip to the bite</a>
+
+  <header>
+    <h1>Drift</h1>
+
+    <div class="row">
+      <label for="manual">Manual</label>
+      <select id="manual"></select>
+    </div>
+
+    <details id="upload">
+      <summary>Load your own manual</summary>
+      <div class="stack">
+        <label for="paste">Paste the text</label>
+        <textarea id="paste" dir="auto" rows="6"></textarea>
+        <label for="file">Or choose a .txt or .md file</label>
+        <input id="file" type="file" accept=".txt,.md,text/plain,text/markdown">
+        <div>
+          <button type="button" id="load">Load</button>
+        </div>
+        <p id="upload-status" class="muted"></p>
+      </div>
+    </details>
+
+    <div class="row">
+      <label for="chapter">Jump to chapter</label>
+      <select id="chapter"></select>
+    </div>
+
+    <p id="session" class="muted">Reading for less than a minute · Today less than a minute · Longest less than a minute</p>
+    <p id="credits" class="muted">Credits: 0</p>
+  </header>
+
+  <main>
+    <div id="reader">
+      <p id="crumb" class="crumb"></p>
+      <article id="bite" dir="auto" tabindex="-1" aria-labelledby="readout"></article>
+      <p id="readout" class="readout"></p>
+
+      <div class="controls">
+        <button type="button" id="back" class="big">Back</button>
+        <button type="button" id="next" class="big">Next</button>
+      </div>
+
+      <div class="controls">
+        <button type="button" id="drift-open">I drifted (D)</button>
+        <button type="button" id="where">Where am I?</button>
+      </div>
+
+      <form id="ask-form" class="ask" aria-label="What does this mean?">
+        <div class="stack">
+          <label for="term">Word or phrase from this bite</label>
+          <input id="term" dir="auto" type="text" autocomplete="off">
+          <div>
+            <button type="submit">What does this mean?</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="offer" class="offer" hidden>
+        <p id="offer-text"></p>
+        <div class="controls">
+          <button type="button" id="offer-catch">Catch me up</button>
+          <button type="button" id="offer-fine">I'm fine</button>
+        </div>
+      </div>
+
+      <section id="answer" class="answer" aria-labelledby="answer-heading" hidden>
+        <h2 id="answer-heading" tabindex="-1"></h2>
+        <div id="answer-text" class="answer-text"></div>
+        <p id="answer-stat" class="muted"></p>
+        <div>
+          <button type="button" id="answer-back">Back to Bite 1</button>
+        </div>
+      </section>
+    </div>
+
+    <section id="checkpoint" class="panel" aria-labelledby="cp-title" hidden>
+      <h2 id="cp-title"></h2>
+      <p id="cp-summary"></p>
+      <p id="cp-credit" class="credit"></p>
+      <div id="cp-games" class="games" hidden>
+        <p id="cp-games-status">Your games are being prepared…</p>
+        <div class="controls">
+          <button type="button" id="cp-quiz" hidden>Quick quiz</button>
+          <button type="button" id="cp-tf" hidden>True or false</button>
+          <button type="button" id="cp-order" hidden>Put it in order</button>
+        </div>
+      </div>
+      <div class="controls">
+        <button type="button" id="cp-keep" class="big primary">Keep going</button>
+        <button type="button" id="cp-break">60-second break</button>
+      </div>
+    </section>
+
+    <section id="break" class="panel" aria-labelledby="break-title" hidden>
+      <h2 id="break-title">Break</h2>
+      <div id="break-running">
+        <p id="break-count"></p>
+        <p>Stand up, stretch, get some water.</p>
+        <div>
+          <button type="button" id="break-back" class="big">Back now</button>
+        </div>
+      </div>
+      <div id="break-done" hidden>
+        <p id="break-resume"></p>
+        <div>
+          <button type="button" id="break-keep" class="big primary">Keep reading</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="game" class="panel" aria-labelledby="game-title" tabindex="-1" hidden>
+      <h2 id="game-title">Game</h2>
+      <div id="game-container"></div>
+      <p id="game-result"></p>
+      <div>
+        <button type="button" id="game-back" class="big">Back to reading</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="drift" aria-labelledby="drift-title">
+    <h2 id="drift-title">Minds wander. That's normal. Where did you lose the thread?</h2>
+    <div class="stack">
+      <button type="button" id="drift-3">Last 3 bites</button>
+      <button type="button" id="drift-5">Last 5 bites</button>
+      <button type="button" id="drift-10">Last 10 bites</button>
+      <button type="button" id="drift-cancel">Never mind</button>
+    </div>
+  </dialog>
+
+  <div id="sr-live" class="visually-hidden" aria-live="polite"></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

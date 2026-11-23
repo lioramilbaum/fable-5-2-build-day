@@ -1,0 +1,171 @@
+/* Chapter game. Colours inherit from the page (--fg, --bg, --focus) so light and dark both work. */
+
+.game {
+  color: var(--fg, CanvasText);
+  background: transparent;
+  font: inherit;
+  line-height: 1.5;
+  max-inline-size: 40rem;
+  margin-block: 1.5rem;
+  padding-inline: 1rem;
+}
+
+.game :focus-visible {
+  outline: 3px solid var(--focus, currentColor);
+  outline-offset: 3px;
+}
+
+.game-progress {
+  font-weight: 600;
+  margin-block: 0 1rem;
+}
+
+.game-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+}
+
+.game-legend {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0;
+  margin-block-end: 1rem;
+}
+
+.game-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-block-size: 44px;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  margin-block-end: 0.5rem;
+  border: 2px solid color-mix(in srgb, currentColor 45%, transparent);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.game-option:has(input:checked) {
+  border-color: currentColor;
+  border-width: 3px;
+}
+
+.game-option input {
+  flex: none;
+  inline-size: 22px;
+  block-size: 22px;
+  margin: 0;
+  accent-color: currentColor;
+}
+
+.game-button {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding-inline: 1.1rem;
+  margin-block: 0.75rem;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  background: var(--bg, Canvas);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.game-button:disabled {
+  border-style: dashed;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.game-button--secondary {
+  font-weight: 500;
+}
+
+.game-button--small {
+  margin-block: 0;
+}
+
+.game-feedback {
+  margin-block: 1rem;
+  padding: 1rem;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+}
+
+.game-feedback--wrong {
+  border-style: dashed;
+}
+
+.game-verdict {
+  font-weight: 700;
+  margin-block: 0 0.5rem;
+}
+
+.game-quote-intro {
+  margin-block: 0.75rem 0.25rem;
+}
+
+.game-quote {
+  margin-inline: 0;
+  margin-block: 0.25rem;
+  padding-inline: 1rem;
+  border-inline-start: 4px solid currentColor;
+  font-style: italic;
+}
+
+.game-heading {
+  font-size: 1.2rem;
+  margin-block: 0 0.5rem;
+}
+
+.game-hint {
+  font-size: 0.95rem;
+  margin-block: 0 1rem;
+}
+
+.game-steps {
+  margin-block: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.game-step {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-block-size: 44px;
+  padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  margin-block-end: 0.5rem;
+  border: 2px solid color-mix(in srgb, currentColor 45%, transparent);
+  border-radius: 8px;
+}
+
+.game-step-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.game-positions,
+.game-steps-correct {
+  padding-inline-start: 1.5rem;
+  margin-block: 0.5rem;
+}
+
+.game-position {
+  margin-block-end: 0.25rem;
+}
+
+.game-position--wrong {
+  font-style: italic;
+}
+
+.game-result {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
